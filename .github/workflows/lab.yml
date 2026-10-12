@@ -12,3 +12,4 @@ jobs:
           node-version-file: .nvmrc
       - run: npm run setup
       - run: npm run lab
+      - run: npm run lab:versions

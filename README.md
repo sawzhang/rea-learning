@@ -13,6 +13,7 @@ git clone --recurse-submodules https://github.com/sawzhang/rea-learning.git
 cd rea-learning
 npm run setup
 npm run lab
+npm run lab:versions
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -34,6 +35,10 @@ npx --yes npm@11.16.0 run build:cached
 2. [第一轮源码导读](notes/02-source-walkthrough.md)：输入、应用流程、证据和资源回收。
 3. [实验说明](labs/01-static-app/README.md)：运行、观察、修改与局限。
 4. [学习记录](notes/03-progress.md)：本轮已完成内容及下一步。
+
+## 第二轮学习
+
+[版本比较实验](labs/02-version-comparison/README.md)固定两个目标版本，执行正向/反向比较与证据校验负例；[中文源码笔记](notes/04-version-comparison.md)解释匹配层级、覆盖约束和分类局限。
 
 ## 目录
 

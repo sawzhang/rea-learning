@@ -39,3 +39,7 @@
 4. 对照 MCP 工具 schema 与 CLI 输入，整理接口差异。
 
 验证范围：小型自建 JavaScript 目标的 CLI 静态工作流。原生 provider、运行时采集和真实 MCP 客户端连接尚未验证。
+
+## 第二轮完成
+
+版本比较实验及源码阅读已完成，见 [第二轮笔记](04-version-comparison.md)。第一轮 GitHub Actions 已通过；第二轮本地真实 CLI 验证通过，CI 由本轮推送触发。

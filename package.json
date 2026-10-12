@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "lab": "node scripts/run-lab.mjs",
-    "setup": "node scripts/setup.mjs"
+    "setup": "node scripts/setup.mjs",
+    "lab:versions": "node scripts/run-version-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
