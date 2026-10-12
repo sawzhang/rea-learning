@@ -1,0 +1,13 @@
+{
+  "name": "rea-learning",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lab": "node scripts/run-lab.mjs",
+    "setup": "node scripts/setup.mjs"
+  },
+  "engines": {
+    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
+  }
+}
