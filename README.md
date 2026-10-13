@@ -17,6 +17,7 @@ npm run lab:versions
 npm run lab:semantics
 npm run lab:runtime
 npm run lab:coverage
+npm run lab:merge
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -54,6 +55,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第五轮学习
 
 [函数执行覆盖率实验](labs/05-function-coverage/README.md)在相同源码上运行两种场景，按摘要和 UTF-16 范围映射到静态函数节点；[中文源码笔记](notes/07-function-coverage.md)区分函数计数、嵌套分支范围和静态关系缺失。
+
+## 第六轮学习
+
+[多场景覆盖率合并实验](labs/06-coverage-merge/README.md)保留嵌套区间计数语义，比较单场景与合并后的指定分支覆盖；[中文源码笔记](notes/08-coverage-merge.md)解释源码身份、分段继承和负例拒绝。
 
 ## 目录
 
