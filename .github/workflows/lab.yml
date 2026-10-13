@@ -17,3 +17,4 @@ jobs:
       - run: npm run lab:runtime
       - run: npm run lab:coverage
       - run: npm run lab:merge
+      - run: npm run lab:identity

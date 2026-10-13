@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import assert from 'node:assert/strict';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const output = resolve(root, 'results/05-function-coverage');
+const output = resolve(root, process.argv[3] ?? 'results/05-function-coverage');
 mkdirSync(output, { recursive: true });
 function run(name, args, expectedError = false) {
   const result = spawnSync(process.execPath, [resolve(root, 'upstream/scripts/rea.mjs'), ...args, '--json'], {
@@ -22,7 +22,7 @@ function run(name, args, expectedError = false) {
   }
   return data;
 }
-const targetRoot = resolve(root, 'labs/05-function-coverage/target');
+const targetRoot = resolve(root, process.argv[2] ?? 'labs/05-function-coverage/target');
 const application = run('application', ['analyze-javascript-application', targetRoot]);
 const sourcePath = resolve(targetRoot, 'logic.js');
 const bytes = readFileSync(sourcePath);
@@ -43,7 +43,7 @@ for (const scenario of ['baseline', 'expanded']) {
   if (execution.error) throw execution.error;
   assert.equal(execution.status, 0, execution.stderr);
   const oracle = JSON.parse(execution.stdout);
-  assert.equal(oracle.result, 42);
+  assert.equal(oracle.result, Number(process.argv[4] ?? 42));
   assert.equal(oracle.branch, scenario === 'baseline' ? 'positive' : 'non-positive');
   const files = readdirSync(coverageDir).filter(name => name.endsWith('.json'));
   assert.equal(files.length, 1, 'One process must produce one coverage payload');

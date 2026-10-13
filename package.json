@@ -10,7 +10,8 @@
     "lab:semantics": "node scripts/run-semantic-lab.mjs",
     "lab:runtime": "node scripts/run-runtime-lab.mjs",
     "lab:coverage": "node scripts/run-coverage-lab.mjs",
-    "lab:merge": "node scripts/run-merge-lab.mjs"
+    "lab:merge": "node scripts/run-merge-lab.mjs",
+    "lab:identity": "node scripts/run-identity-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
