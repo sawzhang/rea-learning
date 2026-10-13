@@ -14,6 +14,7 @@ cd rea-learning
 npm run setup
 npm run lab
 npm run lab:versions
+npm run lab:semantics
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -39,6 +40,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第二轮学习
 
 [版本比较实验](labs/02-version-comparison/README.md)固定两个目标版本，执行正向/反向比较与证据校验负例；[中文源码笔记](notes/04-version-comparison.md)解释匹配层级、覆盖约束和分类局限。
+
+## 第三轮学习
+
+[静态语义关系图实验](labs/03-static-semantics/README.md)查询字面量影响、属性来源、端点与调用者，对照候选边和 unknown；[中文源码笔记](notes/05-static-semantics.md)解释 provenance 上下文及 status/coverage 的区别。
 
 ## 目录
 

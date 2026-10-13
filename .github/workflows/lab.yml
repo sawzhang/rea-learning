@@ -13,3 +13,4 @@ jobs:
       - run: npm run setup
       - run: npm run lab
       - run: npm run lab:versions
+      - run: npm run lab:semantics
