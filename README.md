@@ -19,6 +19,7 @@ npm run lab:runtime
 npm run lab:coverage
 npm run lab:merge
 npm run lab:identity
+npm run lab:migration
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -64,6 +65,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第七轮学习
 
 [真实跨版本覆盖率身份实验](labs/07-cross-version-identity/README.md)执行原版、注释版和同长度行为变更版，验证同版本成功与跨版本拒绝；[中文源码笔记](notes/09-cross-version-identity.md)解释同名同范围为何不等于源码身份。
+
+## 第八轮学习
+
+[跨版本函数映射与迁移实验](labs/08-coverage-migration/README.md)保留完整指纹依据、候选与未迁移区间，仅对相同函数文本投影历史覆盖；[中文源码笔记](notes/10-function-migration.md)解释映射、迁移和目标执行事实的边界。
 
 ## 目录
 
