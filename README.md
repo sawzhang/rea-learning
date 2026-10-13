@@ -20,6 +20,7 @@ npm run lab:coverage
 npm run lab:merge
 npm run lab:identity
 npm run lab:migration
+npm run lab:ast
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -69,6 +70,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第八轮学习
 
 [跨版本函数映射与迁移实验](labs/08-coverage-migration/README.md)保留完整指纹依据、候选与未迁移区间，仅对相同函数文本投影历史覆盖；[中文源码笔记](notes/10-function-migration.md)解释映射、迁移和目标执行事实的边界。
+
+## 第九轮学习
+
+[局部 AST 区间映射实验](labs/09-ast-intervals/README.md)只投影唯一对应的 return 历史区间，完整保留修改、新增和其他未知范围；[中文源码笔记](notes/11-ast-intervals.md)解释映射依据和控制流限制。
 
 ## 目录
 

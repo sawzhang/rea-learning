@@ -12,7 +12,8 @@
     "lab:coverage": "node scripts/run-coverage-lab.mjs",
     "lab:merge": "node scripts/run-merge-lab.mjs",
     "lab:identity": "node scripts/run-identity-lab.mjs",
-    "lab:migration": "node scripts/run-migration-lab.mjs"
+    "lab:migration": "node scripts/run-migration-lab.mjs",
+    "lab:ast": "node scripts/run-ast-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
