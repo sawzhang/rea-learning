@@ -23,6 +23,7 @@ npm run lab:migration
 npm run lab:ast
 npm run lab:fallthrough
 npm run lab:exceptions
+npm run lab:async
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -84,6 +85,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十一轮学习
 
 [异常与 finally 映射实验](labs/11-exceptions/README.md)对照函数执行次数和最终完成结果，拒绝未建模的异常上下文迁移；[中文源码笔记](notes/13-exceptions.md)保留候选、原覆盖区间与未知范围。
+
+## 第十二轮学习
+
+[await 与异步 finally 实验](labs/12-async-finally/README.md)对照 Promise 完成结果和事件顺序，保留 suspension 上下文的未知区间；[中文源码笔记](notes/14-async-finally.md)区分静态 task 关系、独立覆盖率和自建事件日志。
 
 ## 目录
 

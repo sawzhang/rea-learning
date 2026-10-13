@@ -15,7 +15,8 @@
     "lab:migration": "node scripts/run-migration-lab.mjs",
     "lab:ast": "node scripts/run-ast-lab.mjs",
     "lab:fallthrough": "node scripts/run-fallthrough-lab.mjs",
-    "lab:exceptions": "node scripts/run-exception-lab.mjs"
+    "lab:exceptions": "node scripts/run-exception-lab.mjs",
+    "lab:async": "node scripts/run-async-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
