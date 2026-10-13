@@ -22,6 +22,7 @@ npm run lab:identity
 npm run lab:migration
 npm run lab:ast
 npm run lab:fallthrough
+npm run lab:exceptions
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -79,6 +80,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十轮学习
 
 [前置控制流与 fallthrough 实验](labs/10-fallthrough/README.md)验证真实条件、提前返回和赋值变化，保留控制上下文与未知区间；[中文源码笔记](notes/12-fallthrough.md)说明有限顺序模型的迁移边界。
+
+## 第十一轮学习
+
+[异常与 finally 映射实验](labs/11-exceptions/README.md)对照函数执行次数和最终完成结果，拒绝未建模的异常上下文迁移；[中文源码笔记](notes/13-exceptions.md)保留候选、原覆盖区间与未知范围。
 
 ## 目录
 

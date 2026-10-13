@@ -21,3 +21,4 @@ jobs:
       - run: npm run lab:migration
       - run: npm run lab:ast
       - run: npm run lab:fallthrough
+      - run: npm run lab:exceptions
