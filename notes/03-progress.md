@@ -51,3 +51,7 @@
 ## 第四轮完成
 
 受控 Node Inspector、静态语义对照及 reconciliation 实验已完成，见 [第四轮笔记](06-runtime-observation.md)。第三轮 CI 已通过；本轮 CI 在推送后验证四个实验。
+
+## 第五轮完成
+
+两个受控场景的函数与分支覆盖率对照已完成，见 [第五轮笔记](07-function-coverage.md)。第四轮 CI 已通过；本轮 CI 在推送后验证五个实验。

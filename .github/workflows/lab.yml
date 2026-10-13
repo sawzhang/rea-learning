@@ -15,3 +15,4 @@ jobs:
       - run: npm run lab:versions
       - run: npm run lab:semantics
       - run: npm run lab:runtime
+      - run: npm run lab:coverage

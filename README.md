@@ -16,6 +16,7 @@ npm run lab
 npm run lab:versions
 npm run lab:semantics
 npm run lab:runtime
+npm run lab:coverage
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -49,6 +50,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第四轮学习
 
 [受控运行时观测实验](labs/04-runtime-observation/README.md)启动自建 Node 目标，以 loopback Inspector 观测脚本，再与静态工件及语义查询对照；[中文源码笔记](notes/06-runtime-observation.md)说明脚本存在、路径关联和函数执行的不同证据边界。
+
+## 第五轮学习
+
+[函数执行覆盖率实验](labs/05-function-coverage/README.md)在相同源码上运行两种场景，按摘要和 UTF-16 范围映射到静态函数节点；[中文源码笔记](notes/07-function-coverage.md)区分函数计数、嵌套分支范围和静态关系缺失。
 
 ## 目录
 
