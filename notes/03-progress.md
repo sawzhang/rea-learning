@@ -47,3 +47,7 @@
 ## 第三轮完成
 
 静态语义图与六种查询本地验证通过，见 [第三轮笔记](05-static-semantics.md)。第二轮 CI 已通过；本轮 CI 在推送后验证全部三个实验。
+
+## 第四轮完成
+
+受控 Node Inspector、静态语义对照及 reconciliation 实验已完成，见 [第四轮笔记](06-runtime-observation.md)。第三轮 CI 已通过；本轮 CI 在推送后验证四个实验。
