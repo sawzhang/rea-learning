@@ -26,6 +26,7 @@ npm run lab:exceptions
 npm run lab:async
 npm run lab:concurrency
 npm run lab:cancellation
+npm run lab:abort
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -99,6 +100,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十四轮学习
 
 [allSettled/any 与显式取消实验](labs/14-cancellation/README.md)区分聚合结果、abort 请求、任务合作与清理确认；[中文源码笔记](notes/16-cancellation.md)保留入口策略和无法迁移区间。
+
+## 第十五轮学习
+
+[预先取消、重复请求与清理失败实验](labs/15-abort-cleanup/README.md)保留逻辑资源归属和失败重试记录；[中文源码笔记](notes/17-abort-cleanup.md)说明 settlement、cleanup 与 AST 迁移的边界。
 
 ## 目录
 
