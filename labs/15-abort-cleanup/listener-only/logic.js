@@ -19,7 +19,7 @@ export function createTask(id, controller, events, cleanupFailures = 0) {
     });
   }
   controller.signal.addEventListener('abort', onAbort, { once: true });
-  
+
   return { promise, retryCleanup: cleanup, forceStop: () => { events.push('forced-stop'); onAbort(); }, inspect: () => ({ state, cleanupAttempts, abortCallbacks, settlements, owned: ownership.has(id), resource: { ...resource } }) };
 }
 export async function consume(promise, events) { try { return await promise; } finally { events.push('owner-finally'); } }
