@@ -16,7 +16,8 @@
     "lab:ast": "node scripts/run-ast-lab.mjs",
     "lab:fallthrough": "node scripts/run-fallthrough-lab.mjs",
     "lab:exceptions": "node scripts/run-exception-lab.mjs",
-    "lab:async": "node scripts/run-async-lab.mjs"
+    "lab:async": "node scripts/run-async-lab.mjs",
+    "lab:concurrency": "node scripts/run-concurrency-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
