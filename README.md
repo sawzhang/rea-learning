@@ -25,6 +25,7 @@ npm run lab:fallthrough
 npm run lab:exceptions
 npm run lab:async
 npm run lab:concurrency
+npm run lab:cancellation
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -94,6 +95,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十三轮学习
 
 [Promise 并发与任务归属实验](labs/13-promise-ownership/README.md)显式控制 all/race 交错并保存剩余任务结果；[中文源码笔记](notes/15-promise-ownership.md)解释静态提取缺口、任务生命周期和同文本迁移边界。
+
+## 第十四轮学习
+
+[allSettled/any 与显式取消实验](labs/14-cancellation/README.md)区分聚合结果、abort 请求、任务合作与清理确认；[中文源码笔记](notes/16-cancellation.md)保留入口策略和无法迁移区间。
 
 ## 目录
 
