@@ -27,6 +27,7 @@ npm run lab:async
 npm run lab:concurrency
 npm run lab:cancellation
 npm run lab:abort
+npm run lab:composed
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -104,6 +105,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十五轮学习
 
 [预先取消、重复请求与清理失败实验](labs/15-abort-cleanup/README.md)保留逻辑资源归属和失败重试记录；[中文源码笔记](notes/17-abort-cleanup.md)说明 settlement、cleanup 与 AST 迁移的边界。
+
+## 第十六轮学习
+
+[组合信号与多取消源实验](labs/16-composed-signals/README.md)用三个实现隔离信号合并与清理 guard 的影响；[中文源码笔记](notes/18-composed-signals.md)保留重试来源、失败 owner 和迁移未知区间。
 
 ## 目录
 

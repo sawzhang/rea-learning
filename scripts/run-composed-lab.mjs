@@ -1,0 +1,37 @@
+import { spawnSync } from 'node:child_process';
+import { createRequire } from 'node:module';
+import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, readdirSync } from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { resolve, dirname } from 'node:path';
+import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),output=resolve(root,'results/16-composed-signals');mkdirSync(output,{recursive:true});
+const require=createRequire(resolve(root,'upstream/package.json'));const {parse}=require('@babel/parser');const hash=text=>createHash('sha256').update(text).digest('hex');const models={};
+for(const version of ['composed','direct-guarded','direct-unguarded']){
+  const directory=resolve(root,`labs/16-composed-signals/${version}`),path=resolve(directory,'logic.js'),source=readFileSync(path,'utf8');
+  const result=spawnSync(process.execPath,[resolve(root,'upstream/scripts/rea.mjs'),'analyze-javascript-application',directory,'--json'],{encoding:'utf8',timeout:30000,maxBuffer:64*1024*1024});if(result.error)throw result.error;assert.equal(result.status,0,result.stderr);
+  writeFileSync(resolve(output,`${version}.stderr.log`),result.stderr);const evidence=JSON.parse(result.stdout);assert.ok(!evidence.error);writeFileSync(resolve(output,`${version}-evidence.json`),JSON.stringify(evidence,null,2));
+  const graph=evidence.normalized_result.semantic_graph,ast=parse(source,{sourceType:'module'}),functions=ast.program.body.map(n=>n.declaration??n),factory=functions.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='createTask'),consumer=functions.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='consume');
+  const observed=factory.body.body.find(n=>n.type==='VariableDeclaration'&&n.declarations[0].id.name==='observedSignals').declarations[0].init;
+  if(version==='composed'){assert.equal(observed.type,'ArrayExpression');assert.equal(observed.elements[0].callee.object.name,'AbortSignal');assert.equal(observed.elements[0].callee.property.name,'any');}else assert.equal(observed.name,'signals');
+  const onAbort=factory.body.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='onAbort');const queued=onAbort.body.body.find(n=>n.type==='ExpressionStatement'&&n.expression.type==='CallExpression'&&n.expression.callee.name==='queueMicrotask').expression.arguments[0].body;
+  const guard=queued.body[0];assert.equal(guard.type,'IfStatement');assert.equal(guard.consequent.type,version==='direct-unguarded'?'BlockStatement':'ReturnStatement');
+  const cleanupPolicy={guard_text:source.slice(guard.start,guard.end),callback_body:{text:source.slice(queued.start,queued.end),startOffset:queued.start,endOffset:queued.end},one_shot_early_return:guard.consequent.type==='ReturnStatement'};
+  const consumerNode=graph.nodes.find(n=>n.kind==='function'&&n.label==='consume'&&n.identity.module_path==='logic.js');assert.equal(consumerNode.identity.artifact_sha256,hash(source));
+  const coverageDir=mkdtempSync(resolve(output,`${version}-coverage-`));const execution=spawnSync(process.execPath,['--unhandled-rejections=strict',resolve(directory,'main.js')],{encoding:'utf8',timeout:10000,env:{...process.env,NODE_V8_COVERAGE:coverageDir}});if(execution.error)throw execution.error;assert.equal(execution.status,0,execution.stderr);writeFileSync(resolve(output,`${version}.stdout.log`),execution.stdout);const reports=JSON.parse(execution.stdout);assert.equal(reports.length,5);
+  for(const r of reports){
+    const composed=version==='composed',guarded=version!=='direct-unguarded';const reason=r.scenario==='B-first'?'B-reason':'A-reason';
+    assert.equal(r.first.chosenReason,reason);assert.deepEqual(r.final.outcome,{kind:'rejected',message:reason});assert.equal(r.first.settlements,1);assert.equal(r.final.settlements,1);assert.equal(r.first.abortCallbacks,composed?1:2);assert.equal(r.first.cleanupAttempts,guarded?1:2);assert.equal(r.events.filter(e=>e==='owner-finally').length,1);
+    if(r.scenario==='cleanup-once'){
+      if(guarded){assert.equal(r.first.owned,true);assert.equal(r.retry.acknowledged,true);assert.equal(r.final.cleanupAttempts,2);assert.ok(r.events.indexOf('explicit-cleanup-retry')>r.events.indexOf('cleanup-failed'));}
+      else{assert.equal(r.first.owned,false);assert.equal(r.retry,null);assert.equal(r.first.cleanupAttempts,2);assert.ok(!r.events.includes('explicit-cleanup-retry'));}
+    }else if(r.scenario==='cleanup-permanent'){
+      assert.equal(r.first.owned,true);assert.equal(r.retry.acknowledged,false);assert.equal(r.final.owned,true);assert.equal(r.final.resource.released,false);assert.equal(r.final.cleanupAttempts,guarded?2:3);assert.ok(r.retained.some(resource=>resource.id===r.scenario&&resource.owner===r.scenario));
+    }else{assert.equal(r.final.owned,false);assert.equal(r.final.duplicateReleaseAttempts,guarded?0:1);}
+  }
+  assert.equal(hash(readFileSync(path,'utf8')),hash(source));const files=readdirSync(coverageDir).filter(n=>n.endsWith('.json'));assert.equal(files.length,1);const raw=JSON.parse(readFileSync(resolve(coverageDir,files[0]),'utf8'));const script=raw.result.find(s=>s.url===pathToFileURL(path).href);assert.ok(script);const fn=script.functions.filter(f=>f.ranges[0].startOffset===consumer.start&&f.ranges[0].endOffset===consumer.end);assert.equal(fn.length,1);assert.equal(fn[0].ranges[0].count,5);
+  models[version]={logic_sha256:hash(source),evidence_id:evidence.evidence_id,consumer_node_id:consumerNode.node_id,ast_policy:{cleanup_policy:cleanupPolicy,observed_signals:{text:source.slice(observed.start,observed.end),startOffset:observed.start,endOffset:observed.end},consumer_text:source.slice(consumer.start,consumer.end),consumer_range:{startOffset:consumer.start,endOffset:consumer.end}},consumer_coverage:fn[0],semantic_unknowns:graph.unknowns,reports};
+}
+for(const model of Object.values(models))assert.equal(model.ast_policy.consumer_text,models.composed.ast_policy.consumer_text);
+const migrations=[['direct-unguarded','direct-guarded','cleanup-placement-policy-differs'],['direct-guarded','composed','signal-composition-policy-differs']].map(([source,target,reason])=>({source,target,status:'unknown',reason,source_evidence_id:models[source].evidence_id,target_evidence_id:models[target].evidence_id,source_ast_policy:models[source].ast_policy,target_ast_policy:models[target].ast_policy,unmigrated_source:models[source].consumer_coverage.ranges,target_unknown:[{...models[target].ast_policy.consumer_range,count:null,status:'unknown'}]}));
+const report={authority:'controlled multi-source cancellation with analyst ownership checks',node_version:process.version,parser_version:require('@babel/parser/package.json').version,offset_units:'utf16-code-units',models,migrations,limitations:['Logical in-memory resources only; no claim about OS cleanup.','Direct guarded listeners demonstrate that composition alone is not the cleanup guarantee.','One Promise settlement does not imply one cleanup attempt.']};writeFileSync(resolve(output,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({scenarios:Object.fromEntries(Object.entries(models).map(([v,m])=>[v,m.reports.map(r=>({scenario:r.scenario,reason:r.first.chosenReason,callbacks:r.first.abortCallbacks,first_cleanup:r.first.cleanupAttempts,final_cleanup:r.final.cleanupAttempts,duplicate_release:r.final.duplicateReleaseAttempts,explicit_retry:r.retry!==null,owned:r.final.owned}))])),migrations},null,2));
