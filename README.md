@@ -28,6 +28,8 @@ npm run lab:concurrency
 npm run lab:cancellation
 npm run lab:abort
 npm run lab:composed
+npm run lab:inflight
+npm run lab:scope
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -113,6 +115,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十七轮学习
 
 [并发清理重试实验](labs/17-cleanup-inflight/README.md)区分 Promise 引用与底层工作共享；[中文源码笔记](notes/19-cleanup-inflight.md)保留失败 owner、明确重试与无法迁移区间。运行 `npm run lab:inflight`。
+
+## 第十八轮学习
+
+[真实作用域多 owner 实验](labs/18-upstream-scope/README.md)直接执行固定上游类，用受控 close 验证部分清理成功和剩余归属；[中文源码笔记](notes/20-upstream-scope.md)记录公开观察、私有状态推断和迁移未知范围。
 
 ## 目录
 

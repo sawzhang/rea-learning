@@ -21,7 +21,8 @@
     "lab:cancellation": "node scripts/run-cancellation-lab.mjs",
     "lab:abort": "node scripts/run-abort-lab.mjs",
     "lab:composed": "node scripts/run-composed-lab.mjs",
-    "lab:inflight": "node scripts/run-inflight-lab.mjs"
+    "lab:inflight": "node scripts/run-inflight-lab.mjs",
+    "lab:scope": "node scripts/run-scope-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"

@@ -28,3 +28,4 @@ jobs:
       - run: npm run lab:abort
       - run: npm run lab:composed
       - run: npm run lab:inflight
+      - run: npm run lab:scope
