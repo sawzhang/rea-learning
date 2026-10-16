@@ -110,6 +110,10 @@ npx --yes npm@11.16.0 run build:cached
 
 [组合信号与多取消源实验](labs/16-composed-signals/README.md)用三个实现隔离信号合并与清理 guard 的影响；[中文源码笔记](notes/18-composed-signals.md)保留重试来源、失败 owner 和迁移未知区间。
 
+## 第十七轮学习
+
+[并发清理重试实验](labs/17-cleanup-inflight/README.md)区分 Promise 引用与底层工作共享；[中文源码笔记](notes/19-cleanup-inflight.md)保留失败 owner、明确重试与无法迁移区间。运行 `npm run lab:inflight`。
+
 ## 目录
 
 - `upstream/`：上游源码与独立 Git 历史。

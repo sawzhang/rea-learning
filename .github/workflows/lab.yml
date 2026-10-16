@@ -27,3 +27,4 @@ jobs:
       - run: npm run lab:cancellation
       - run: npm run lab:abort
       - run: npm run lab:composed
+      - run: npm run lab:inflight
