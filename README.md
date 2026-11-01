@@ -30,6 +30,7 @@ npm run lab:abort
 npm run lab:composed
 npm run lab:inflight
 npm run lab:scope
+npm run lab:active-close
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -119,6 +120,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十八轮学习
 
 [真实作用域多 owner 实验](labs/18-upstream-scope/README.md)直接执行固定上游类，用受控 close 验证部分清理成功和剩余归属；[中文源码笔记](notes/20-upstream-scope.md)记录公开观察、私有状态推断和迁移未知范围。
+
+## 第十九轮学习
+
+[active 操作与 close 实验](labs/19-active-close/README.md)验证等待、准入和错误阶段；[中文源码笔记](notes/21-active-close.md)保留资源归属及相同 observer 的迁移未知边界。
 
 ## 目录
 

@@ -107,3 +107,7 @@ all/race 六个受控聚合过程与剩余任务归属对照完成，见 [第十
 ## 第十八轮完成
 
 真实 ArtifactResourceScope 的两组多 owner 场景验证完成，见 [第十八轮笔记](20-upstream-scope.md)。第十七轮 CI 已通过；本轮 CI 推送后验证全部实验。
+
+## 第十九轮完成
+
+2026-11-01 完成此前选定的 active 操作与 close 交错实验，三场景验证见 [第十九轮笔记](21-active-close.md)。第十八轮 CI 已通过，本轮推送后检查全部实验。
