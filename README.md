@@ -31,6 +31,7 @@ npm run lab:composed
 npm run lab:inflight
 npm run lab:scope
 npm run lab:active-close
+npm run lab:registration
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -124,6 +125,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第十九轮学习
 
 [active 操作与 close 实验](labs/19-active-close/README.md)验证等待、准入和错误阶段；[中文源码笔记](notes/21-active-close.md)保留资源归属及相同 observer 的迁移未知边界。
+
+## 第二十轮学习
+
+[drain 期间新增 owner 实验](labs/20-drain-registration/README.md)对照期间加入、之后加入和持续失败；[中文源码笔记](notes/22-drain-registration.md)保留迭代时机、失败归属及映射未知范围。
 
 ## 目录
 
