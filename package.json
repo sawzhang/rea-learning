@@ -24,7 +24,8 @@
     "lab:inflight": "node scripts/run-inflight-lab.mjs",
     "lab:scope": "node scripts/run-scope-lab.mjs",
     "lab:active-close": "node scripts/run-active-close-lab.mjs",
-    "lab:registration": "node scripts/run-registration-lab.mjs"
+    "lab:registration": "node scripts/run-registration-lab.mjs",
+    "lab:owners": "node scripts/run-owner-identity-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"

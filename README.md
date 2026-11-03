@@ -32,6 +32,7 @@ npm run lab:inflight
 npm run lab:scope
 npm run lab:active-close
 npm run lab:registration
+npm run lab:owners
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -129,6 +130,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第二十轮学习
 
 [drain 期间新增 owner 实验](labs/20-drain-registration/README.md)对照期间加入、之后加入和持续失败；[中文源码笔记](notes/22-drain-registration.md)保留迭代时机、失败归属及映射未知范围。
+
+## 第二十一轮学习
+
+[owner 身份与同名摘要实验](labs/21-owner-identity/README.md)区分 owner 数、聚合原因数和资源名数；[中文源码笔记](notes/23-owner-identity.md)保留失败归属和迁移未知范围。
 
 ## 目录
 
