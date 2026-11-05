@@ -26,7 +26,8 @@
     "lab:active-close": "node scripts/run-active-close-lab.mjs",
     "lab:registration": "node scripts/run-registration-lab.mjs",
     "lab:owners": "node scripts/run-owner-identity-lab.mjs",
-    "lab:shared-reader": "node scripts/run-shared-reader-lab.mjs"
+    "lab:shared-reader": "node scripts/run-shared-reader-lab.mjs",
+    "lab:owned-file": "node scripts/run-owned-file-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"

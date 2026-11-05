@@ -34,6 +34,7 @@ npm run lab:active-close
 npm run lab:registration
 npm run lab:owners
 npm run lab:shared-reader
+npm run lab:owned-file
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -139,6 +140,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 第二十二轮学习
 
 [共享 reader 清理实验](labs/22-shared-reader/README.md)对照不同 owner 共享实体时的重复关闭策略；[中文源码笔记](notes/24-shared-reader.md)区分 token 释放与 wrapper 清理确认，保留迁移未知项。
+
+## 第二十三轮学习
+
+[真实文件关闭确认实验](labs/23-owned-file/README.md)对照顺序、并发关闭和外部失效；[中文源码笔记](notes/25-owned-file.md)区分 fd 失效与 owner 确认，保留映射未知区间。
 
 ## 目录
 
