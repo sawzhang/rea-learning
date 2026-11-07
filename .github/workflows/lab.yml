@@ -34,3 +34,4 @@ jobs:
       - run: npm run lab:owners
       - run: npm run lab:shared-reader
       - run: npm run lab:owned-file
+      - run: npm run lab:close-fault
