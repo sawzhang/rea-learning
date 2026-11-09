@@ -36,6 +36,7 @@ npm run lab:owners
 npm run lab:shared-reader
 npm run lab:owned-file
 npm run lab:close-fault
+npm run lab:directory-close
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -149,6 +150,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 文件关闭故障补充实验
 
 [受控关闭失败实验](labs/26-close-fault/README.md)对照底层 close 拒绝后的可重试与持续失败；[中文源码笔记](notes/29-close-fault.md)保留原始错误身份和未迁移区间。
+
+## 目录 reader 部分关闭实验
+
+[目录关闭与重试](labs/27-directory-close/README.md)用三个真实临时文件验证聚合错误和失败项重试；[中文源码笔记](notes/30-directory-close.md)保留关闭轨迹及映射边界。
 
 ## 目录
 
