@@ -36,3 +36,4 @@ jobs:
       - run: npm run lab:owned-file
       - run: npm run lab:close-fault
       - run: npm run lab:directory-close
+      - run: npm run lab:stream-close
