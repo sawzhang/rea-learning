@@ -39,6 +39,7 @@ npm run lab:close-fault
 npm run lab:directory-close
 npm run lab:stream-close
 npm run lab:stream-close-fault
+npm run lab:stream-sticky
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -164,6 +165,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 共享关闭失败实验
 
 [受控实验](labs/29-stream-close-fault/README.md)验证两路共享失败后的错误归属和重试，见[中文笔记](notes/32-stream-close-fault.md)。
+
+## 共享关闭持续失败实验
+
+[受控实验](labs/30-stream-sticky/README.md)验证句柄失效后的错误保留，见[中文笔记](notes/33-stream-sticky.md)。
 
 ## 目录
 
