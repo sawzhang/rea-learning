@@ -41,6 +41,7 @@ npm run lab:stream-close
 npm run lab:stream-close-fault
 npm run lab:stream-sticky
 npm run lab:mixed-close
+npm run lab:same-path
 ```
 
 实验分析 `labs/01-static-app/target`，保存完整 Evidence、摘要、模块特征追踪与 stderr 日志到 `results/`。分析过程中不执行目标代码；目标的示例 URL 使用 `.invalid` 域名。
@@ -174,6 +175,10 @@ npx --yes npm@11.16.0 run build:cached
 ## 目录混合关闭实验
 
 [受控实验](labs/31-mixed-close/README.md)和[中文笔记](notes/34-mixed-close.md)记录三类关闭结果如何聚合。
+
+## 同路径多句柄清理
+
+[受控实验](labs/32-same-path/README.md)与[中文笔记](notes/35-same-path.md)区分资源路径和 owner 身份。
 
 ## 目录
 

@@ -33,7 +33,8 @@
     "lab:stream-close": "node scripts/run-stream-close-lab.mjs",
     "lab:stream-close-fault": "node scripts/run-stream-close-fault-lab.mjs",
     "lab:stream-sticky": "node scripts/run-stream-sticky-lab.mjs",
-    "lab:mixed-close": "node scripts/run-mixed-close-lab.mjs"
+    "lab:mixed-close": "node scripts/run-mixed-close-lab.mjs",
+    "lab:same-path": "node scripts/run-same-path-lab.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
